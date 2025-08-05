@@ -1,0 +1,120 @@
+.landing-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 10%;
+    transition: all var(--transition-normal);
+    background-color: transparent;
+}
+
+.landing-nav.scrolled {
+    background-color: var(--paper-color);
+    box-shadow: var(--shadow-medium);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.landing-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing-nav-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.landing-nav-logo a {
+    color: white;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.landing-nav.scrolled .landing-nav-logo a {
+    color: var(--text-primary);
+}
+
+.landing-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.landing-theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: white;
+    transition: transform var(--transition-fast);
+}
+
+.landing-nav.scrolled .landing-theme-toggle {
+    color: var(--text-primary);
+}
+
+.landing-theme-toggle:hover {
+    transform: scale(1.1);
+}
+
+.landing-nav-login,
+.landing-nav-register {
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.landing-nav-login {
+    color: white;
+}
+
+.landing-nav.scrolled .landing-nav-login {
+    color: var(--text-primary);
+}
+
+.landing-nav-login:hover {
+    opacity: 0.8;
+}
+
+.landing-nav-register {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius-sm);
+}
+
+.dark-theme .landing-nav-register {
+    color: var(--primary-dark);
+}
+
+.landing-nav.scrolled .landing-nav-register {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.dark-theme .landing-nav.scrolled .landing-nav-register {
+    background-color: var(--primary-light);
+}
+
+.landing-nav-register:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-light);
+}
+
+@media (max-width: 768px) {
+    .landing-nav {
+        padding: 1rem 5%;
+    }
+
+    .landing-nav-right {
+        gap: 1rem;
+    }
+
+    .landing-nav-login,
+    .landing-nav-register {
+        font-size: 0.9rem;
+    }
+}

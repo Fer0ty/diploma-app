@@ -1,0 +1,18 @@
+@import '../../styles/variables.css';
+
+.footer {
+    background-color: var(--paper-color);
+    color: var(--text-secondary);
+    padding: var(--spacing-md);
+    text-align: center;
+    border-top: 1px solid var(--divider-color);
+    height: var(--footer-height);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    width: 100%;
+}

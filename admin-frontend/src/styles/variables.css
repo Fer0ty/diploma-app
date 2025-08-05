@@ -1,0 +1,114 @@
+:root {
+    /* Основные цвета - светлая тема */
+    --primary-color: #1976d2;
+    --primary-light: #4791db;
+    --primary-dark: #115293;
+
+    --secondary-color: #dc004e;
+    --secondary-light: #e33371;
+    --secondary-dark: #9a0036;
+
+    /* Нейтральные цвета - светлая тема */
+    --background-color: #f5f5f5;
+    --background-secondary: #fafafa;
+    --background-hover: #f0f0f0;
+    --paper-color: #ffffff;
+    --divider-color: #e0e0e0;
+
+    /* Текстовые цвета - светлая тема */
+    --text-primary: #212121;
+    --text-secondary: #757575;
+    --text-disabled: #9e9e9e;
+
+    /* Цвета обратной связи - светлая тема */
+    --success-color: #4caf50;
+    --success-dark: #388e3c;
+    --warning-color: #ff9800;
+    --warning-dark: #f57c00;
+    --error-color: #f44336;
+    --error-dark: #d32f2f;
+    --info-color: #2196f3;
+    --info-dark: #1976d2;
+
+    /* Размеры и отступы */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    /* Тени */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-dark: 0 8px 16px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 12px 24px rgba(0, 0, 0, 0.15);
+
+    /* Границы */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 12px;
+
+    /* Анимации */
+    --transition-fast: 0.2s;
+    --transition-normal: 0.3s;
+    --transition-slow: 0.5s;
+
+    /* Размеры компонентов */
+    --header-height: 64px;
+    --footer-height: 56px;
+    --sidebar-width: 240px;
+
+    /* RGB-значения для использования с opacity */
+    --primary-color-rgb: 25, 118, 210;
+    --secondary-color-rgb: 220, 0, 78;
+    --success-color-rgb: 76, 175, 80;
+    --error-color-rgb: 244, 67, 54;
+    --warning-color-rgb: 255, 152, 0;
+}
+
+/* Темная тема */
+.dark-theme {
+    /* Основные цвета - темная тема */
+    --primary-color: #0d47a1;
+    --primary-light: #2962ff;
+    --primary-dark: #002171;
+
+    --secondary-color: #c2185b;
+    --secondary-light: #e91e63;
+    --secondary-dark: #880e4f;
+
+    /* Нейтральные цвета - темная тема */
+    --background-color: #121212;
+    --background-secondary: #1e1e1e;
+    --background-hover: #2a2a2a;
+    --paper-color: #1e1e1e;
+    --divider-color: #424242;
+
+    /* Текстовые цвета - темная тема */
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --text-disabled: #6c6c6c;
+
+    /* Цвета обратной связи - темная тема */
+    --success-color: #43a047;
+    --success-dark: #2e7d32;
+    --warning-color: #ffa000;
+    --warning-dark: #ff6f00;
+    --error-color: #d32f2f;
+    --error-dark: #b71c1c;
+    --info-color: #1976d2;
+    --info-dark: #0d47a1;
+
+    /* Тени - темная тема */
+    --shadow-light: 0 2px 4px rgba(0, 0, 0, 0.25);
+    --shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.25);
+    --shadow-dark: 0 8px 16px rgba(0, 0, 0, 0.25);
+    --shadow-heavy: 0 12px 24px rgba(0, 0, 0, 0.35);
+
+    /* RGB-значения для использования с opacity - темная тема */
+    --primary-color-rgb: 13, 71, 161;
+    --secondary-color-rgb: 194, 24, 91;
+    --success-color-rgb: 67, 160, 71;
+    --error-color-rgb: 211, 47, 47;
+    --warning-color-rgb: 255, 160, 0;
+}

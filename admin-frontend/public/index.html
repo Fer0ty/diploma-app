@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/admin/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Admin panel for e-commerce platform" />
+  <link rel="apple-touch-icon" href="/admin/logo192.png" />
+  <link rel="manifest" href="/admin/manifest.json" />
+  <title>Admin Panel</title>
+  <!-- Добавим отладочный скрипт -->
+  <script>
+    console.log('Document loaded with location:', window.location.href);
+
+    // Проверим, что статические файлы загружаются правильно
+    document.addEventListener('DOMContentLoaded', function() {
+      const manifestLink = document.querySelector('link[rel="manifest"]');
+      console.log('Manifest URL:', manifestLink.href);
+
+      // Попробуем загрузить manifest.json вручную
+      fetch(manifestLink.href)
+              .then(response => {
+                console.log('Manifest fetch response:', response.status, response.statusText);
+                return response.json();
+              })
+              .then(data => {
+                console.log('Manifest loaded successfully:', data);
+              })
+              .catch(error => {
+                console.error('Error loading manifest:', error);
+              });
+    });
+  </script>
+</head>
+<body>
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+</body>
+</html>

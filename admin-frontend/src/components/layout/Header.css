@@ -1,0 +1,202 @@
+@import '../../styles/variables.css';
+
+.header {
+    background-color: var(--primary-color);
+    color: white;
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--spacing-md);
+    box-shadow: var(--shadow-medium);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-right: auto;
+}
+
+.header-title a {
+    color: white;
+    text-decoration: none;
+}
+
+.header-nav {
+    display: flex;
+    align-items: center;
+}
+
+.header-nav-item {
+    color: white;
+    text-decoration: none;
+    padding: 6px 12px;
+    margin-left: var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    transition: all var(--transition-fast);
+    font-weight: 500;
+}
+
+.header-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+}
+
+.header-username {
+    margin-right: var(--spacing-md);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: white;
+    transition: transform var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    border-radius: 50%;
+}
+
+.theme-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.dark-theme .header {
+    background-color: var(--primary-dark);
+}
+
+.dark-theme .theme-toggle {
+    color: var(--text-primary);
+}
+
+.dark-theme .header-nav-item:hover {
+    color: var(--primary-light);
+    opacity: 1;
+}
+
+.header-auth-controls {
+    display: flex;
+    align-items: center;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    margin-left: var(--spacing-md);
+}
+
+.header-username {
+    margin-right: var(--spacing-md);
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.header-logout-button {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+}
+
+.header-logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.header-logout-button:active {
+    transform: translateY(1px);
+}
+
+.header-logout-icon {
+    margin-right: 6px;
+    font-size: 1rem;
+}
+
+/* Стили для темной темы */
+.dark-theme .header-logout-button {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .header-logout-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.header-logout-text {
+    margin-left: 6px;
+}
+
+@keyframes pulse-light {
+    0% {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+@keyframes pulse-dark {
+    0% {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.header-logout-button:hover {
+    animation: pulse-light 1.5s infinite;
+}
+
+.dark-theme .header-logout-button:hover {
+    animation: pulse-dark 1.5s infinite;
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .header-title {
+        font-size: 1.1rem;
+    }
+
+    .header-username {
+        display: none;
+    }
+
+    .header-logout-text {
+        display: none;
+    }
+
+    .header-logout-button {
+        padding: 8px;
+    }
+
+    .header-nav-item {
+        padding: 6px 8px;
+        margin-left: var(--spacing-xs);
+        font-size: 0.9rem;
+    }
+}

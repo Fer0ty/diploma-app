@@ -1,0 +1,196 @@
+.photos-manager {
+    margin-bottom: var(--spacing-lg);
+}
+
+.photos-manager-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+    color: var(--text-primary);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--divider-color);
+}
+
+.photo-dropzone {
+    border: 2px dashed var(--divider-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    background-color: var(--background-color);
+    margin-bottom: var(--spacing-md);
+}
+
+.photo-dropzone:hover {
+    border-color: var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+}
+
+.photo-dropzone-active {
+    border-color: var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+}
+
+.photo-input {
+    display: none;
+}
+
+.dropzone-icon {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-secondary);
+}
+
+.dropzone-text {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.dropzone-browse {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.dropzone-hint {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.upload-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(var(--primary-color-rgb), 0.2);
+    border-radius: 50%;
+    border-top-color: var(--primary-color);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.photo-item {
+    position: relative;
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    transition: all var(--transition-normal);
+    height: 150px;
+}
+
+.photo-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-normal);
+}
+
+.photo-main {
+    box-shadow: 0 0 0 3px var(--primary-color), var(--shadow-light);
+}
+
+.photo-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: var(--spacing-xs);
+    display: flex;
+    gap: var(--spacing-xs);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.7), transparent);
+    border-radius: 0 0 0 var(--border-radius-sm);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.photo-item:hover .photo-actions {
+    opacity: 1;
+}
+
+.photo-action-btn {
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+    font-size: 1rem;
+}
+
+.photo-main-btn:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.photo-main-active {
+    background-color: var(--primary-color);
+    color: white;
+    cursor: default;
+}
+
+.photo-delete-btn:hover {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.main-photo-badge {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(var(--primary-color-rgb), 0.8);
+    color: white;
+    font-size: 0.8rem;
+    padding: var(--spacing-xs);
+    text-align: center;
+}
+
+.no-photos {
+    text-align: center;
+    padding: var(--spacing-md);
+    color: var(--text-secondary);
+    font-style: italic;
+}
+
+/* Dark theme support */
+.dark-theme .photo-dropzone {
+    background-color: #252525;
+}
+
+.dark-theme .photo-dropzone:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme .photo-dropzone-active {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    .photos-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .photo-item {
+        height: 120px;
+    }
+}
