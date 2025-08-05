@@ -1,0 +1,116 @@
+services:
+  # База данных PostgreSQL
+  postgres:
+    image: postgres:15-alpine
+    container_name: diploma-postgres
+    environment:
+      POSTGRES_DB: shopbase
+      POSTGRES_USER: shopbase
+      POSTGRES_PASSWORD: shopbasepassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/models:/docker-entrypoint-initdb.d
+    networks:
+      - diploma-network
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U shopbase"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Spring Boot
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: diploma-backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      # Переменные окружения для базы данных
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/shopbase
+      SPRING_DATASOURCE_USERNAME: shopbase
+      SPRING_DATASOURCE_PASSWORD: shopbasepassword
+      # Переменные окружения для работы Hibernate
+      SPRING_JPA_HIBERNATE_DDL_AUTO: validate
+      SPRING_JPA_HIBERNATE_DIALECT: org.hibernate.dialect.PostgreSQLDialect
+      SPRING_JPA_HIBERNATE_SHOW_SQL: "true"
+      # Переменные окружения для JWT (тестовый)
+      JWT_SECRET_KEY: w6GwnRvRzsg97qPqQ/9BhLLIuoDZMgyhMsPfVWNHcPk=
+      # Переменные окружения для загрузки файлов
+      APP_UPLOAD_DIR: /app/uploads
+      # Переменные окружения для поддоменов
+      TENANT_ROOT_DOMAIN: diploma.ru
+      TENANT_LOCAL_HOST: localhost
+      # Переменные окружения для шифрования (тестовые)
+      CRYPTO_SECRET_KEY: 123456789012345
+      CRYPTO_INIT_VECTOR: 123456789012345
+      # Профиль Spring
+      SPRING_PROFILES_ACTIVE: dev
+      # Логирование
+      LOGGING_LEVEL_ROOT: INFO
+      LOGGING_LEVEL_DIPLOMA_ECOMMERCE_BACKEND: DEBUG
+    volumes:
+      - uploads_data:/app/uploads
+    networks:
+      - diploma-network
+    ports:
+      - "8080:8080"
+
+  # Admin Frontend
+  admin-frontend:
+    build:
+      context: ./admin-frontend
+      dockerfile: Dockerfile
+    container_name: diploma-admin-frontend
+    depends_on:
+      - backend
+    networks:
+      - diploma-network
+
+  # Shop Frontend
+  shop-frontend:
+    build:
+      context: ./shop-frontend
+      dockerfile: Dockerfile
+      args:
+        - REACT_APP_API_BASE_URL=/api/v1
+    container_name: diploma-shop-frontend
+    environment:
+      - REACT_APP_API_BASE_URL=/api/v1
+    depends_on:
+      - backend
+    networks:
+      - diploma-network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: diploma-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - uploads_data:/app/uploads:ro
+    depends_on:
+      - backend
+      - admin-frontend
+      - shop-frontend
+    networks:
+      - diploma-network
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
+
+networks:
+  diploma-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+  uploads_data:
